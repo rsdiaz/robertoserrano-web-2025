@@ -23,7 +23,7 @@ export default function ContactWithMe() {
 		},
 	]
 	return (
-		<Card>
+		<Card className="shadow-elegant">
 			<CardHeader>
 				<CardTitle className="text-xl">Conecta conmigo</CardTitle>
 				<CardDescription>Sígueme en redes sociales para más contenido y actualizaciones</CardDescription>
