@@ -12,6 +12,7 @@ import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import BackNavigation from './components/BackNavigation'
 import PostSidebar from './components/PostSidebar'
+import Comments from './components/Comments'
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
 	const { slug } = await props.params
@@ -167,28 +168,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
 					<PostSidebar post={post} />
 				</div>
 				{/* Comments Section */}
-				<section className="mt-16 pt-8 border-t border-border">
-					<div className="max-w-4xl">
-						<h3 className="text-2xl font-bold mb-8 flex items-center">
-							<MessageCircle className="h-6 w-6 mr-2" />
-							Comentarios
-						</h3>
-
-						<Card className="shadow-elegant">
-							<CardContent className="pt-6">
-								<div className="text-center py-12">
-									<MessageCircle className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
-									<p className="text-muted-foreground mb-4">
-										¿Qué te pareció este artículo? ¡Me encantaría conocer tu opinión!
-									</p>
-									<Button variant="outline" asChild>
-										<Link href="/contact">Enviar comentario</Link>
-									</Button>
-								</div>
-							</CardContent>
-						</Card>
-					</div>
-				</section>
+				{/* <Comments /> */}
 			</div>
 		</div>
 	)
