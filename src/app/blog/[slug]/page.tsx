@@ -1,7 +1,7 @@
 import '@/app/css/prims.css'
 import { Badge } from '@/app/components/ui/badge'
 import { Button } from '@/app/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/components/ui/card'
+import { Card, CardContent } from '@/app/components/ui/card'
 import { Separator } from '@/app/components/ui/separator'
 import { allBlogPosts } from 'contentlayer/generated'
 import { Bookmark, Calendar, Clock, Eye, Heart, MessageCircle, Share2, Tag, User } from 'lucide-react'
@@ -11,6 +11,7 @@ import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import BackNavigation from './components/BackNavigation'
+import PostSidebar from './components/PostSidebar'
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
 	const { slug } = await props.params
@@ -40,6 +41,8 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
 	if (!post) {
 		return notFound()
 	}
+
+	console.log(post)
 
 	return (
 		<div className="min-h-screen pt-24 pb-16">
@@ -163,75 +166,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
 					</article>
 
 					{/* Sidebar */}
-					<aside className="lg:col-span-1">
-						<div className="sticky top-32 space-y-8">
-							{/* Table of Contents */}
-							<Card className="shadow-elegant">
-								<CardHeader>
-									<CardTitle className="text-lg">Contenido</CardTitle>
-								</CardHeader>
-								<CardContent>
-									<nav className="space-y-2 text-sm">
-										<a href="#introduccion" className="block text-muted-foreground hover:text-accent transition-smooth">
-											Introducción
-										</a>
-										<a href="#tecnicas" className="block text-muted-foreground hover:text-accent transition-smooth">
-											Técnicas de optimización
-										</a>
-										<a href="#metricas" className="block text-muted-foreground hover:text-accent transition-smooth">
-											Métricas importantes
-										</a>
-										<a href="#herramientas" className="block text-muted-foreground hover:text-accent transition-smooth">
-											Herramientas
-										</a>
-										<a href="#conclusion" className="block text-muted-foreground hover:text-accent transition-smooth">
-											Conclusión
-										</a>
-									</nav>
-								</CardContent>
-							</Card>
-
-							{/* Related Posts */}
-							{/* {relatedPosts.length > 0 && (
-								<Card className="shadow-elegant">
-									<CardHeader>
-										<CardTitle className="text-lg">Artículos relacionados</CardTitle>
-									</CardHeader>
-									<CardContent className="space-y-4">
-										{relatedPosts.map(relatedPost => (
-											<div key={relatedPost.id} className="group">
-												<Link
-													to={`/blog/${relatedPost.slug}`}
-													className="block hover:bg-muted/50 p-3 rounded-lg transition-smooth"
-												>
-													<h4 className="font-medium text-sm group-hover:text-accent transition-smooth line-clamp-2 mb-2">
-														{relatedPost.title}
-													</h4>
-													<div className="flex items-center text-xs text-muted-foreground">
-														<Clock className="h-3 w-3 mr-1" />
-														{relatedPost.readTime}
-													</div>
-												</Link>
-											</div>
-										))}
-									</CardContent>
-								</Card>
-							)} */}
-
-							{/* Newsletter */}
-							<Card className="shadow-elegant">
-								<CardHeader>
-									<CardTitle className="text-lg">Newsletter</CardTitle>
-									<CardDescription>Recibe los últimos artículos en tu inbox</CardDescription>
-								</CardHeader>
-								<CardContent>
-									<Button className="w-full" size="sm">
-										Suscribirse
-									</Button>
-								</CardContent>
-							</Card>
-						</div>
-					</aside>
+					<PostSidebar post={post} />
 				</div>
 				{/* Comments Section */}
 				<section className="mt-16 pt-8 border-t border-border">
