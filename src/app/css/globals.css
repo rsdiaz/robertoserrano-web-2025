@@ -169,9 +169,10 @@ All colors MUST be HSL.
 
   /* Opcional: fuente por defecto si usas font-sans */
   --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", sans-serif;
+  --shadow-glow: 0 0 30px hsl(var(--accent) / 0.15);
 }
 
-@layer components {
+@layer utilities {
   /* Hero gradient background */
   .gradient-hero {
     background: var(--gradient-primary);
@@ -182,10 +183,7 @@ All colors MUST be HSL.
     box-shadow: var(--shadow-elegant);
   }
   
-  .shadow-glow {
-    box-shadow: var(--shadow-glow);
-  }
-  
+
   /* Smooth transitions */
   .transition-smooth {
     transition: var(--transition-smooth);

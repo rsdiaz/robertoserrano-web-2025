@@ -1,3 +1,4 @@
+import ContactWithMe from '@/app/components/ContactWhitMe'
 import { Card, CardContent, CardHeader, CardTitle } from '@/app/components/ui/card'
 import { BlogPost } from 'contentlayer/generated'
 
@@ -12,7 +13,7 @@ export default function PostSidebar({ post }: { post: BlogPost }) {
 		<aside className="lg:col-span-1">
 			<div className="sticky top-32 space-y-8">
 				{/* Table of Contents */}
-				<Card className="shadow-elegant">
+				<Card>
 					<CardHeader>
 						<CardTitle className="text-lg">Contenido</CardTitle>
 					</CardHeader>
@@ -32,6 +33,7 @@ export default function PostSidebar({ post }: { post: BlogPost }) {
 						</nav>
 					</CardContent>
 				</Card>
+				<ContactWithMe />
 
 				{/* Related Posts */}
 				{/* {relatedPosts.length > 0 && (
