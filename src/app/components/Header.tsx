@@ -7,8 +7,44 @@ import { Menu, Moon, Sun, Code2 } from 'lucide-react'
 import { useTheme } from 'next-themes'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { motion, AnimatePresence } from 'motion/react'
 
-const Header = () => {
+function ThemeToggle({ theme, setTheme }: { theme: string | undefined; setTheme: (v: string) => void }) {
+	return (
+		<Button
+			variant="ghost"
+			size="sm"
+			onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
+			className="w-9 h-9 p-0 flex items-center justify-center"
+		>
+			<AnimatePresence mode="wait" initial={false}>
+				{theme === 'dark' ? (
+					<motion.span
+						key="sun"
+						initial={{ rotate: -90, opacity: 0, scale: 0.8 }}
+						animate={{ rotate: 0, opacity: 1, scale: 1 }}
+						exit={{ rotate: 90, opacity: 0, scale: 0.8 }}
+						transition={{ duration: 0.25, ease: 'easeOut' }}
+					>
+						<Sun className="h-4 w-4" />
+					</motion.span>
+				) : (
+					<motion.span
+						key="moon"
+						initial={{ rotate: 90, opacity: 0, scale: 0.8 }}
+						animate={{ rotate: 0, opacity: 1, scale: 1 }}
+						exit={{ rotate: -90, opacity: 0, scale: 0.8 }}
+						transition={{ duration: 0.25, ease: 'easeOut' }}
+					>
+						<Moon className="h-4 w-4" />
+					</motion.span>
+				)}
+			</AnimatePresence>
+		</Button>
+	)
+}
+
+export default function Header() {
 	const [mounted, setMounted] = useState(false)
 	const { theme, setTheme } = useTheme()
 	const pathname = usePathname()
@@ -66,14 +102,7 @@ const Header = () => {
 					</nav>
 
 					<div className="flex items-center space-x-4">
-						<Button
-							variant="ghost"
-							size="sm"
-							onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-							className="w-9 h-9 p-0"
-						>
-							{theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-						</Button>
+						<ThemeToggle theme={theme} setTheme={setTheme} />
 
 						{/* Mobile Menu */}
 						<Sheet>
@@ -104,5 +133,3 @@ const Header = () => {
 		</header>
 	)
 }
-
-export default Header

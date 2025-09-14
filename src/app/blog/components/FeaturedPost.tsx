@@ -19,7 +19,7 @@ export function FeaturedPost() {
 
 					<div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
 						{featuredPosts.slice(0, 2).map((post, index) => (
-							<Card key={index} className="overflow-hidden shadow-glow hover:shadow-elegant transition-smooth group">
+							<Card key={index} className="overflow-hidden hover:shadow-glow transition-smooth group">
 								<div className="aspect-video bg-muted overflow-hidden">
 									<Image
 										src={post.image?.url}

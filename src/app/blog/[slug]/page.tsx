@@ -99,8 +99,14 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
 
 							<div className="flex items-center justify-between">
 								<div className="flex items-center space-x-3">
-									<div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-										<User className="h-5 w-5 text-primary" />
+									<div className="w-10 h-10 rounded-full flex items-center justify-center">
+										<Image
+											src="/static/profile.jpg"
+											width="100"
+											height="100"
+											alt="Roberto Serrano Diaz-Grande"
+											className="rounded-full"
+										/>
 									</div>
 									<div>
 										<p className="font-medium">{post?.author}</p>
@@ -146,8 +152,14 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
 						<Card className="mt-12 shadow-elegant">
 							<CardContent className="pt-6">
 								<div className="flex items-start space-x-4">
-									<div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
-										<User className="h-8 w-8 text-primary" />
+									<div className="w-16 h-16 flex rounded-full items-center justify-center flex-shrink-0">
+										<Image
+											src="/static/profile.jpg"
+											width="1000"
+											height="1000"
+											alt="Roberto Serrano Diaz-Grande"
+											className="rounded-full"
+										/>
 									</div>
 									<div className="flex-1">
 										<h4 className="text-xl font-bold mb-2">{post?.author}</h4>
