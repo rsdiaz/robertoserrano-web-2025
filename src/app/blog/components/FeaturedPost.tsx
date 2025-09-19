@@ -8,6 +8,8 @@ import Link from 'next/link'
 
 export function FeaturedPost() {
 	const featuredPosts = allBlogPosts.filter(post => post)
+
+	console.log('Featured Posts:', featuredPosts)
 	return (
 		<>
 			{featuredPosts.length > 0 && (

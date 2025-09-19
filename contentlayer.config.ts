@@ -1,4 +1,4 @@
-import { defineDocumentType, makeSource } from 'contentlayer2/source-files'
+import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer2/source-files'
 import readingTime from 'reading-time'
 import path from 'path'
 // Remark packages
@@ -22,6 +22,12 @@ import rehypePresetMinify from 'rehype-preset-minify'
 
 const root = process.cwd()
 
+const computedFields: ComputedFields = {
+	id: {
+		type: 'string',
+		resolve: doc => Buffer.from(doc.title).toString('base64'),
+	},
+}
 export const BlogPost = defineDocumentType(() => ({
 	name: 'BlogPost',
 	filePathPattern: `blog-posts/**/*.mdx`,
@@ -37,6 +43,7 @@ export const BlogPost = defineDocumentType(() => ({
 		image: { type: 'json', required: false },
 	},
 	computedFields: {
+		...computedFields,
 		readingTime: { type: 'json', resolve: doc => readingTime(doc.body.raw) },
 		slug: {
 			type: 'string',
