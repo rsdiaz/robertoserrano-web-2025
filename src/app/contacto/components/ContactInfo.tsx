@@ -1,14 +1,14 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/app/components/ui/card'
-import { Clock, Mail, MapPin } from 'lucide-react'
+import { Clock, MapPin } from 'lucide-react'
 
 const contactInfo = [
-	{
+	/* 	{
 		icon: Mail,
 		label: 'Email',
 		value: 'roberto@serrano.dev',
 		href: 'mailto:roberto@serrano.dev',
 		description: 'Para consultas profesionales y colaboraciones',
-	},
+	}, */
 	{
 		icon: MapPin,
 		label: 'Ubicación',
