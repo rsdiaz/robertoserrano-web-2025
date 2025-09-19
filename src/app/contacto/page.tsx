@@ -10,11 +10,11 @@ const Contact = () => {
 				{/* Header */}
 				<div className="text-center mb-16">
 					<h1 className="text-4xl sm:text-5xl font-bold mb-6">
-						Hablemos de tu <span className="text-gradient">próximo proyecto</span>
+						Hablemos de tu <span className="text-gradient"> próximo proyecto</span> 🚀
 					</h1>
 					<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
 						¿Tienes una idea innovadora? ¿Necesitas ayuda con un proyecto existente? Estoy aquí para convertir tus ideas
-						en soluciones digitales exitosas.
+						en soluciones digitales.
 					</p>
 				</div>
 
