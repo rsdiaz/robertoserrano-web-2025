@@ -12,9 +12,22 @@ const Footer = () => {
 		{ icon: Mail, href: 'mailto:roberto@serrano.dev', label: 'Email' },
 	]
 
+	const footerPhrases = [
+		'Entre bugs, deploys y buenas ideas: aquí sigo creando. ⚡',
+		'Compilando ideas, debuggeando el mundo, happy hacking. 🚀',
+		'Code, coffee & creatividad: mi stack esencial. ☕💻',
+		'Entre commits y café, siempre construyendo algo nuevo. 🔧',
+		'Un bug menos, una idea más. ✨',
+		'Aquí no paro: deploy tras deploy, idea tras idea. ⚡',
+	]
+
+	function getRandomPhrase() {
+		return footerPhrases[Math.floor(Math.random() * footerPhrases.length)]
+	}
+
 	const quickLinks = [
 		{ name: 'Sobre mí', href: '/sobre-mi' },
-		{ name: 'Proyectos', href: '/proyectos' },
+		/* { name: 'Proyectos', href: '/proyectos' }, */
 		{ name: 'Blog', href: '/blog' },
 		{ name: 'Contacto', href: '/contacto' },
 	]
@@ -29,9 +42,7 @@ const Footer = () => {
 							<Code2 className="h-6 w-6 text-primary" />
 							<span className="text-lg font-bold text-gradient">Roberto Serrano</span>
 						</Link>
-						<p className="text-muted-foreground max-w-xs">
-							Desarrollador de software especializado en crear aplicaciones útiles que resuelven problemas reales.
-						</p>
+						<p className="text-muted-foreground max-w-xs">{getRandomPhrase()}</p>
 					</div>
 
 					{/* Quick Links */}
