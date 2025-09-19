@@ -5,8 +5,8 @@ export default function BlogHeader() {
 				Mi <span className="text-gradient">Blog</span>
 			</h1>
 			<p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-				Pensamientos, experiencias y aprendizajes sobre desarrollo de software, tecnología y mejores prácticas en el
-				mundo del código.
+				Mi rincón digital para hablar de lo que me mueve: software, innovación y cómo escribir mejor código (sin perder
+				la cabeza en el intento).
 			</p>
 		</div>
 	)
