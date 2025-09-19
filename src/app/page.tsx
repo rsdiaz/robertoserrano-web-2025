@@ -1,10 +1,9 @@
 import { Button } from '@/app/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/components/ui/card'
 import { Badge } from '@/app/components/ui/badge'
-import { ArrowRight, Code2, Zap, Users, BookOpen, ExternalLink } from 'lucide-react'
+import { ArrowRight, Code2, Zap, Users, BookOpen } from 'lucide-react'
 import HeroBg from './public/hero-bg.jpg'
 import Link from 'next/link'
-import { allProjects } from 'contentlayer/generated'
 import { getLatestPosts } from '@/app/lib/blog-posts'
 
 export default function Home() {
@@ -12,17 +11,18 @@ export default function Home() {
 		{
 			icon: Code2,
 			title: 'Desarrollo Full-Stack',
-			description: 'Experiencia completa en frontend y backend con tecnologías modernas',
+			description: 'De la interfaz al servidor: construyo soluciones completas con tecnologías modernas.',
 		},
 		{
 			icon: Zap,
 			title: 'Soluciones Eficientes',
-			description: 'Código limpio, optimizado y escalable que resuelve problemas reales',
+			description: 'Código limpio, optimizado y escalable que resuelve problemas reales.',
 		},
 		{
 			icon: Users,
-			title: 'Enfoque Colaborativo',
-			description: 'Trabajo en equipo y comunicación efectiva para mejores resultados',
+			title: 'Soluciones con IA',
+			description:
+				'Aplico inteligencia artificial para crear aplicaciones más inteligentes, eficientes y personalizadas.',
 		},
 	]
 
@@ -53,14 +53,13 @@ export default function Home() {
 						</h1>
 
 						<p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-							Desarrollador de software con pasión por crear aplicaciones innovadoras, escalables y centradas en el
-							usuario. Transformo ideas en soluciones digitales efectivas.
+							Full stack de ideas → código → soluciones digitales. Escalables, usables y con cariño dev. 💻
 						</p>
 
 						<div className="flex flex-col sm:flex-row gap-4 justify-center pt-8">
 							<Button size="lg" className="shadow-glow" asChild>
 								<Link href="/projects">
-									Ver mis proyectos
+									Ver mis artículos
 									<ArrowRight className="ml-2 h-4 w-4" />
 								</Link>
 							</Button>
@@ -78,8 +77,7 @@ export default function Home() {
 					<div className="text-center mb-16">
 						<h2 className="text-3xl sm:text-4xl font-bold mb-4">¿Por qué elegir mi trabajo?</h2>
 						<p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-							Combino experiencia técnica con enfoque en resultados para entregar soluciones que realmente marcan la
-							diferencia.
+							Lo mío no es solo código. Es transformar retos en productos que suman, funcionan y sorprenden
 						</p>
 					</div>
 
@@ -102,7 +100,7 @@ export default function Home() {
 			</section>
 
 			{/* Recent Projects */}
-			<section className="py-24">
+			{/* <section className="py-24">
 				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex justify-between items-end mb-16">
 						<div>
@@ -121,11 +119,11 @@ export default function Home() {
 						{allProjects.map((project, index) => (
 							<Card key={index} className="overflow-hidden group hover:shadow-glow transition-smooth">
 								<div className="aspect-video bg-muted overflow-hidden">
-									{/* <Image 
-                    src={project.image} 
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
-                  /> */}
+									<Image
+										src={project.image}
+										alt={project.title}
+										className="w-full h-full object-cover group-hover:scale-105 transition-smooth"
+									/>
 								</div>
 								<CardHeader>
 									<CardTitle className="text-xl">{project.title}</CardTitle>
@@ -144,7 +142,7 @@ export default function Home() {
 						))}
 					</div>
 				</div>
-			</section>
+			</section> */}
 
 			{/* Recent Blog Posts */}
 			<section className="py-24 bg-muted/30">
