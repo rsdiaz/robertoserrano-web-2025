@@ -13,6 +13,7 @@ import { notFound } from 'next/navigation'
 import BackNavigation from './components/BackNavigation'
 import PostSidebar from './components/PostSidebar'
 import Comments from './components/Comments'
+import siteMetadata from '@/data/siteMetadata'
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
 	const { slug } = await props.params
@@ -104,7 +105,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
 											src="/static/profile.jpg"
 											width="100"
 											height="100"
-											alt="Roberto Serrano Diaz-Grande"
+											alt="Roberto Serrano Díaz-Grande"
 											className="rounded-full"
 										/>
 									</div>
@@ -163,10 +164,7 @@ export default async function BlogPostPage(props: { params: Promise<{ slug: stri
 									</div>
 									<div className="flex-1">
 										<h4 className="text-xl font-bold mb-2">{post?.author}</h4>
-										<p className="text-muted-foreground mb-4">
-											Ingeniero de Software especializado en crear aplicaciones útiles que resuelven problemas reales.
-											Con más de 6 años de experiencia en desarrollo full-stack y tecnologías modernas.
-										</p>
+										<p className="text-muted-foreground mb-4">{siteMetadata.profileDescription}</p>
 										<Button variant="outline" size="sm" asChild>
 											<Link href="/about">Ver perfil completo</Link>
 										</Button>
