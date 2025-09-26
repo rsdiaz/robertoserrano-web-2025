@@ -1,3 +1,6 @@
+'use client'
+
+import { useEffect, useMemo, useState } from 'react'
 import { Badge } from '@/app/components/ui/badge'
 import { Button } from '@/app/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/app/components/ui/card'
@@ -7,7 +10,24 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export function FeaturedPost() {
-	const featuredPosts = allBlogPosts.filter(post => post)
+	const featuredPosts = useMemo(() => allBlogPosts.filter(Boolean), [])
+	const [data, setData] = useState<{ slug: string; views: number }[]>([])
+
+	const fetchPostViews = async (slug: string) => {
+		const res = await fetch(`/api/views/${slug}`)
+		const result = await res.json()
+		return result[0]
+	}
+
+	useEffect(() => {
+		const loadViews = async () => {
+			const views = await Promise.all(featuredPosts.map(post => fetchPostViews(post.slug)))
+			setData(views)
+		}
+		if (featuredPosts.length) loadViews()
+	}, [featuredPosts])
+
+	console.log(data)
 
 	return (
 		<>
@@ -70,6 +90,11 @@ export function FeaturedPost() {
 									</div>
 
 									<div className="flex justify-between items-center">
+										{post.slug && data.find(item => item.slug === post.slug) && (
+											<span className="text-sm text-muted-foreground">
+												{data.find(item => item.slug === post.slug)?.views.toLocaleString() || 0} visualizaciones
+											</span>
+										)}
 										{/* <span className="text-sm text-muted-foreground">
 												{post.views.toLocaleString()} visualizaciones
 											</span> */}
